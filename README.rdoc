@@ -1,0 +1,24 @@
+== Projeto LiHead
+
+Esse projeto tem a intenção de compartilhar o mesmo banco de dados chamado Lihead para os projetos LiHead BackOffice e LiHead Site, onde o backoffice consegue administrar os membros e os produtos do site. E integrar a aplicação <b>escamboapp</b> com um banco de dados chamado <b>escamboapp</b>.
+
+Iniciando a aplicação:
+
+* Clona ou faça o Download do projeto.
+
+* Instale as Gems dependentes do projeto:
+  <tt>Bundle</tt>
+
+* Crie o banco de dados e o usuário padrão:
+  <tt>rake db:create db:migrate db:seed</tt>
+
+* E rode a aplicação em localhost, tendo a opção de utilizar o comando:
+  <tt>foreman start</tt>
+
+<b>OBSERVAÇÕES</b>
+* Para que a sessão "Members" funcione vá ao projeto LiHead Site e siga as instruções.
+* Sem o projeto LiHead Site a sessão "Members" não funcionará.
+* Caso queira testar o projeto com banco populado, utilize os seguintes comandos:
+<tt>rake utils:popular_admin</tt>
+<tt>rake utils:popular_produto</tt>
+* Usuário padrão <b>user</b> admin@admin.com <b>password</b> 123456

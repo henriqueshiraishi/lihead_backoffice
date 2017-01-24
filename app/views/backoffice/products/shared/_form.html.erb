@@ -1,0 +1,30 @@
+<%= form_tag backoffice_products_path do %>
+  <div class="col-lg-12">
+    <div class="col-lg-6">
+      <div class="form-group">
+        <label for="recipient-name" class="control-label">Nome:</label>
+        <%= text_field_tag(:'product-name', nil, class:"form-control" ) %>
+      </div>
+      <div class="form-group">
+        <label for="message-text" class="control-label">Versão:</label>
+        <%= text_field_tag(:'product-version', nil, class:"form-control" ) %>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="form-group">
+        <label for="message-text" class="control-label">Link:</label>
+        <%= text_field_tag(:'product-link', nil, class:"form-control" ) %>
+      </div>
+      <div class="form-group">
+        <label for="message-text" class="control-label">Categoria:</label>
+        <%= text_field_tag(:'product-category', nil, class:"form-control" ) %>
+      </div>
+    </div>
+  </div>
+  <center><%= submit_tag 'Salvar', class:"btn btn-outline btn-primary btn-lg btn-block", style:"width: 20%" %></center>
+  <script>
+      $('button.btn btn-primary').click(function(){
+          $(this).css('display','none');
+      });
+  </script>
+<% end %>

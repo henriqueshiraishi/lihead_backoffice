@@ -1,0 +1,36 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: 123
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: lihead_development
+
+escamboapp_development:
+  <<: *default
+  database: escamboapp_development
+
+escamboapp_test:
+  <<: *default
+  database: lihead_test
+
+test:
+  <<: *default
+  database: escamboapp_test
+
+production:
+  <<: *default
+  database: lihead_production
+  username: lihead
+  password: <%= ENV['LIHEAD_DATABASE_PASSWORD'] %>
+
+escamboapp_production:
+  <<: *default
+  database: escamboapp_production
+  username: escamboapp
+  password: <%= ENV['LIHEAD_DATABASE_PASSWORD'] %>
+

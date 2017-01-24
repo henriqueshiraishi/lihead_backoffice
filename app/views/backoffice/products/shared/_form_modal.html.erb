@@ -1,0 +1,42 @@
+<div class="modal fade" id="formProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Produto</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_tag backoffice_products_path do %>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">Id:</label>
+            <%= text_field_tag(:'product-id', nil, class:"form-control" ) %>
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">Nome:</label>
+            <%= text_field_tag(:'product-name', nil, class:"form-control" ) %>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="control-label">Versão:</label>
+            <%= text_field_tag(:'product-version', nil, class:"form-control" ) %>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="control-label">Link:</label>
+            <%= text_field_tag(:'product-link', nil, class:"form-control" ) %>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="control-label">Categoria:</label>
+            <%= text_field_tag(:'product-category', nil, class:"form-control" ) %>
+          </div>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          <%=  %>
+          <%= submit_tag 'Salvar', class:"btn btn-primary" %>
+          <script>
+              $('button.btn btn-primary').click(function(){
+                  $(this).css('display','none');
+              });
+          </script>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
