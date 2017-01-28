@@ -5,36 +5,27 @@ class Backoffice::ProductsController < BackofficeController
     @products = Product.all
   end
 
-  def new
-    respond_to do |format|
-      format.js
-    end
-  end
-
   def create
-    @product = Product.new( name: params[:'product-name'], version: params[:'product-version'], link: params[:'product-link'], category: params[:'product-category'])
-    if @product.save
-      # respond_to do |format|
-      #   format.js
-      # end
-      redirect_to backoffice_products_path, notice: "O produto foi cadatrado com sucesso."
+    if params[:'product-id'].to_i > 0
+      @product = Product.find(params[:'product-id'])
+      if @product.update(name: params[:'product-name'], version: params[:'product-version'], link: params[:'product-link'], category: params[:'product-category'])
+        redirect_to backoffice_products_path, notice: "O produto #{@product.name} foi atualizado com sucesso."
+      else
+        :edit
+      end
     else
-      :new
+      @product = Product.new( name: params[:'product-name-new'], version: params[:'product-version-new'], link: params[:'product-link-new'], category: params[:'product-category-new'])
+      if @product.save
+        redirect_to backoffice_products_path, notice: "O produto #{@product.name} foi cadatrado com sucesso."
+      else
+        :index
+      end
     end
   end
 
   def edit
     respond_to do |format|
       format.js
-    end
-  end
-
-  def update
-    @product = Product.find(id: params[:'product-id'])
-    if @product.update(name: params[:'product-name'], version: params[:'product-version'], link: params[:'product-link'], category: params[:'product-category'])
-      redirect_to backoffice_products_path, notice: "O produto foi atualizado com sucesso."
-    else
-      :edit
     end
   end
 
@@ -53,7 +44,4 @@ class Backoffice::ProductsController < BackofficeController
     @product = Product.find(params[:id])
   end
 
-  def params_product
-    params.require(:product).permit(:name, :version, :link, :category)
-  end
 end

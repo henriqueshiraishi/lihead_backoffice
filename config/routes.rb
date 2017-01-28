@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   namespace :backoffice do
     get 'dashboard' => 'dashboard#index'
-    resources :products, except: [:show]
+    resources :products, except: [:show, :new, :update]
     resources :admins, except: [:show]
     resources :members, except: [:show]
     resources :categories, except: [:show]

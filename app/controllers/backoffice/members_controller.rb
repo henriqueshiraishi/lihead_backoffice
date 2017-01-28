@@ -25,7 +25,7 @@ class Backoffice::MembersController < BackofficeController
   def update
     if @member.update(params_member)
       redirect_to backoffice_members_path, notice: "O membro #{@member.email} foi atualizado com sucesso."
-      MemberMailer.update_email(current_admin, @member).deliver_now
+      # MemberMailer.update_email(current_admin, @member).deliver_now
     else
       :edit
     end
